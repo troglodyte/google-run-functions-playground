@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  gcf-python:
+    build: .
+    container_name: gcf-python
+    environment:
+      - PORT=8080
+    command: ["functions-framework", "--target=hello", "--port=8080"]
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/srv
+    restart: unless-stopped

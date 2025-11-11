@@ -1,0 +1,40 @@
+### http endpoint
+# curl "http://localhost:8080?name=Michael"
+GET http://localhost:8080?name=Michael
+
+
+
+### Pubsub endpoint
+# curl -X POST http://localhost:8080
+#  -H "Content-Type: application/cloudevents+json"
+#  -d '{
+#    "specversion": "1.0",
+#    "type": "google.cloud.pubsub.topic.v1.messagePublished",
+#    "source": "//pubsub.googleapis.com/projects/demo/topics/test",
+#    "id": "1234",
+#    "time": "2025-11-11T12:00:00Z",
+#    "datacontenttype": "application/json",
+#    "data": {
+#      "message": {
+#        "data": "SGVsbG8h"
+#      }
+#    }
+#  }'
+POST http://localhost:8080
+Content-Type: application/cloudevents+json
+
+{
+  "specversion": "1.0",
+  "type": "google.cloud.pubsub.topic.v1.messagePublished",
+  "source": "//pubsub.googleapis.com/projects/demo/topics/test",
+  "id": "1234",
+  "time": "2025-11-11T12:00:00Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "message": {
+      "data": "SGVsbG8h"
+    }
+  }
+}
+
+###
